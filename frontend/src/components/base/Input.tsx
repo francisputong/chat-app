@@ -11,7 +11,7 @@ import {
 type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
     name: string;
     label: string;
-    value: string;
+    value?: string;
     isInvalid?: boolean;
     isRequired?: boolean;
     rightElement?: JSX.Element;

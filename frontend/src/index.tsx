@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
+import axios from "axios";
+
+axios.defaults.baseURL = process.env.REACT_APP_API_HOST;
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement

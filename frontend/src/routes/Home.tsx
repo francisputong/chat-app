@@ -8,7 +8,6 @@ import {
     TabPanels,
     Tabs,
 } from "@chakra-ui/react";
-import React from "react";
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup";
 

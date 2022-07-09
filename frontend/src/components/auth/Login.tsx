@@ -1,39 +1,72 @@
 import React, { useState } from "react";
-import { Button, VStack } from "@chakra-ui/react";
+import { Button, useToast, VStack } from "@chakra-ui/react";
 import { InputField } from "../base/Input";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 type Props = {};
 
 const Login = ({}: Props): JSX.Element => {
-    const [registerForm, setRegisterForm] = useState({
-        name: "",
+    const [loginForm, setLoginForm] = useState({
         email: "",
         password: "",
     });
     const [show, setShow] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const history = useHistory();
+    const toast = useToast();
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value, name } = e.target;
 
-        setRegisterForm({ ...registerForm, [name]: value });
+        setLoginForm({ ...loginForm, [name]: value });
     };
 
-    const handleSubmit = () => {};
+    const handleSubmit = async () => {
+        setIsLoading(true);
+        if (!loginForm.email || !loginForm.password) {
+            toast({
+                title: "Please fill all required fields",
+                status: "warning",
+                duration: 5000,
+                isClosable: true,
+                position: "bottom",
+            });
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const { data } = await axios.post("/api/user/login", {
+                email: loginForm.email,
+                password: loginForm.password,
+            });
+
+            localStorage.setItem("userInfo", JSON.stringify(data));
+            setIsLoading(false);
+            history.push("/chats");
+        } catch (error: any) {
+            if (error instanceof Error) {
+                toast({
+                    title: "Server error",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                    position: "bottom",
+                });
+            }
+
+            setIsLoading(false);
+        }
+    };
 
     return (
         <VStack>
             <InputField
-                name='name'
-                placeholder='Enter your name'
-                value={registerForm.name}
-                label='Name'
-                handleOnChange={handleOnChange}
-                isRequired
-            />
-            <InputField
                 name='email'
                 placeholder='Enter your email'
-                value={registerForm.email}
+                value={loginForm.email}
                 label='Email'
                 handleOnChange={handleOnChange}
                 isRequired
@@ -41,7 +74,7 @@ const Login = ({}: Props): JSX.Element => {
             <InputField
                 name='password'
                 placeholder='Password'
-                value={registerForm.password}
+                value={loginForm.password}
                 label='Password'
                 handleOnChange={handleOnChange}
                 type={show ? "text" : "password"}
@@ -61,6 +94,7 @@ const Login = ({}: Props): JSX.Element => {
                 width='100%'
                 style={{ marginTop: 15 }}
                 onClick={handleSubmit}
+                isLoading={isLoading}
             >
                 Login
             </Button>
