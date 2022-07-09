@@ -45,6 +45,13 @@ const Login = ({}: Props): JSX.Element => {
 
             localStorage.setItem("userInfo", JSON.stringify(data));
             setIsLoading(false);
+            toast({
+                title: "Login successful",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+                position: "bottom",
+            });
             history.push("/chats");
         } catch (error: any) {
             if (error instanceof Error) {

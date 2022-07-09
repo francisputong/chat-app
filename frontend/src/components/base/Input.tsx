@@ -10,7 +10,7 @@ import {
 
 type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
     name: string;
-    label: string;
+    label?: string;
     value?: string;
     isInvalid?: boolean;
     isRequired?: boolean;
@@ -31,7 +31,7 @@ export const InputField: React.FC<InputFieldProps> = ({
 }) => {
     return (
         <FormControl isInvalid={isInvalid} isRequired={isRequired}>
-            <FormLabel htmlFor={name}>{label}</FormLabel>
+            {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
             <InputGroup>
                 <Input
                     onChange={(e) => handleOnChange(e)}
