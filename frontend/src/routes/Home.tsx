@@ -13,9 +13,7 @@ import { useHistory } from "react-router-dom";
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup";
 
-type Props = {};
-
-const Home = ({}: Props): JSX.Element => {
+const Home = (): JSX.Element => {
     const history = useHistory();
 
     useEffect(() => {

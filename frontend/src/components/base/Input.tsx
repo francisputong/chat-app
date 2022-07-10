@@ -1,12 +1,10 @@
 import React, { InputHTMLAttributes } from "react";
 import {
-    ComponentWithAs,
     FormControl,
     FormErrorMessage,
     FormLabel,
     Input,
     InputGroup,
-    InputProps,
     InputRightElement,
 } from "@chakra-ui/react";
 

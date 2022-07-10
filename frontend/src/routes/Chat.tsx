@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Box } from "@chakra-ui/react";
-import axios from "axios";
-import { ChatType } from "../types";
 import { ChatState } from "../Context/ChatProvider";
 import ChatBox from "../components/modules/ChatBox";
 import MyChats from "../components/modules/MyChats";
 import SideDrawer from "../components/modules/SideDrawer";
 
-type Props = {};
-
-const Chat = ({}: Props) => {
+const Chat = () => {
     const { user } = ChatState();
     const [fetchAgain, setFetchAgain] = useState(false);
 
