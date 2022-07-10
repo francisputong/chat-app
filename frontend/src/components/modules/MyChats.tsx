@@ -6,8 +6,13 @@ import { ChatState } from "../../Context/ChatProvider";
 import { ChatType, UsersType } from "../../types";
 import Loader from "../base/Loader";
 import { getSender } from "../../config/helpers";
+import GroupChatModal from "./GroupChatModal";
 
-const MyChats = () => {
+type Props = {
+    fetchAgain: boolean;
+};
+
+const MyChats = ({ fetchAgain }: Props) => {
     const [loggedUser, setLoggedUser] = useState<UsersType>();
     const { selectedChat, setSelectedChat, user, chats, setChats } =
         ChatState();
@@ -17,7 +22,7 @@ const MyChats = () => {
     useEffect(() => {
         setLoggedUser(JSON.parse(localStorage.getItem("userInfo")!));
         fetchChats();
-    }, []);
+    }, [fetchAgain]);
 
     const fetchChats = async () => {
         // console.log(user._id);
@@ -32,7 +37,6 @@ const MyChats = () => {
                 "/api/chat",
                 config
             );
-            console.log(data);
             setChats(data);
         } catch (error) {
             toast({
@@ -45,7 +49,6 @@ const MyChats = () => {
             });
         }
     };
-
     return (
         <Box
             display={{ base: selectedChat ? "none" : "flex", md: "flex" }}
@@ -68,15 +71,15 @@ const MyChats = () => {
                 alignItems='center'
             >
                 My Chats
-                {/* <GroupChatModal>
-        <Button
-          d="flex"
-          fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-          rightIcon={<AddIcon />}
-        >
-          New Group Chat
-        </Button>
-      </GroupChatModal> */}
+                <GroupChatModal>
+                    <Button
+                        display='flex'
+                        fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+                        rightIcon={<AddIcon />}
+                    >
+                        New Group Chat
+                    </Button>
+                </GroupChatModal>
             </Box>
             <Box
                 display='flex'

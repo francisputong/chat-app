@@ -3,6 +3,7 @@ export type ChatType = {
     users: SearchUsersType[];
     latestMessage?: any;
     _id: string;
+    groupAdmin: SearchUsersType;
     chatName: string;
 };
 

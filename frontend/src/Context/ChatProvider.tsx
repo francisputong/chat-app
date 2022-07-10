@@ -4,7 +4,7 @@ import { ChatType, UsersType } from "../types";
 
 type ContextType = {
     user: UsersType | null;
-    selectedChat: any;
+    selectedChat: ChatType | null;
     chats: ChatType[];
     setChats: any;
     setUser: any;
@@ -22,7 +22,7 @@ const ChatContext = createContext<ContextType>({
 
 const ChatProvider = ({ children }: any) => {
     const [user, setUser] = useState<UsersType | null>(null);
-    const [selectedChat, setSelectedChat] = useState(null);
+    const [selectedChat, setSelectedChat] = useState<ChatType | null>(null);
     const [chats, setChats] = useState<ChatType[]>([]);
     const history = useHistory();
 

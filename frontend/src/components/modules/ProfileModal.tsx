@@ -14,11 +14,11 @@ import {
     useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
-import { UsersType } from "../../types";
+import { SearchUsersType, UsersType } from "../../types";
 
 type Props = {
-    user: UsersType | null;
-    children: any;
+    user: SearchUsersType | UsersType | null;
+    children?: any;
 };
 
 const ProfileModal = ({ user, children }: Props) => {
