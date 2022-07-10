@@ -25,8 +25,8 @@ const Home = ({}: Props): JSX.Element => {
         }
     }, [history]);
     return (
-        <Container maxW='xl' centerContent>
-            <Box
+        <Container display='flex' alignItems='center' maxW='xl' h='100vh'>
+            {/* <Box
                 display='flex'
                 justifyContent='center'
                 p={3}
@@ -37,10 +37,18 @@ const Home = ({}: Props): JSX.Element => {
                 borderWidth='1px'
             >
                 <Text fontSize='4xl' fontFamily='Work sans'>
-                    Chats
+                    Chat App
                 </Text>
-            </Box>
+            </Box> */}
             <Box bg='white' w='100%' p={4} borderRadius='lg' borderWidth='1px'>
+                <Text
+                    textAlign='center'
+                    fontSize='4xl'
+                    fontFamily='Work sans'
+                    p={4}
+                >
+                    Chat App
+                </Text>
                 <Tabs variant='soft-rounded'>
                     <TabList mb='1em'>
                         <Tab width='50%'>Login</Tab>

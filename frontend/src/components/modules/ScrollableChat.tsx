@@ -42,10 +42,11 @@ const ScrollableChat = ({ messages, typingComponent }: Props) => {
                             )}
                             <span
                                 style={{
+                                    color: "#FFFFFF",
                                     backgroundColor: `${
                                         message.sender._id === user?._id
-                                            ? "#BEE3F8"
-                                            : "#B9F5D0"
+                                            ? "#4173B8"
+                                            : "grey"
                                     }`,
                                     borderRadius: "20px",
                                     padding: "5px 15px",

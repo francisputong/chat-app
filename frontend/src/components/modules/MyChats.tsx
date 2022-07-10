@@ -56,8 +56,7 @@ const MyChats = ({ fetchAgain }: Props) => {
             alignItems='center'
             p={3}
             bg='white'
-            w={{ base: "100%", md: "31%" }}
-            borderRadius='lg'
+            w={{ base: "100%", md: "33%" }}
             borderWidth='1px'
         >
             <Box
@@ -99,7 +98,7 @@ const MyChats = ({ fetchAgain }: Props) => {
                                 cursor='pointer'
                                 bg={
                                     selectedChat === chat
-                                        ? "#38B2AC"
+                                        ? "#4173B8"
                                         : "#E8E8E8"
                                 }
                                 color={

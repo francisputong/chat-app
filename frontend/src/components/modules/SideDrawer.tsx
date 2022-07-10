@@ -136,7 +136,7 @@ const SideDrawer = () => {
                 bg='white'
                 w='100%'
                 p='5px 10px'
-                borderWidth='5px'
+                borderWidth='2px'
             >
                 <Tooltip
                     label='Search users to chat'
@@ -151,9 +151,6 @@ const SideDrawer = () => {
                     </Button>
                 </Tooltip>
 
-                <Text fontSize='2xl' fontFamily='work sans'>
-                    Chat App
-                </Text>
                 <div>
                     <Menu>
                         <MenuButton p={1}>

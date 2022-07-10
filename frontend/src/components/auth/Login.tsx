@@ -71,43 +71,46 @@ const Login = ({}: Props): JSX.Element => {
     };
 
     return (
-        <VStack>
-            <InputField
-                name='email'
-                placeholder='Enter your email'
-                value={loginForm.email}
-                label='Email'
-                handleOnChange={handleOnChange}
-                isRequired
-            />
-            <InputField
-                name='password'
-                placeholder='Password'
-                value={loginForm.password}
-                label='Password'
-                handleOnChange={handleOnChange}
-                type={show ? "text" : "password"}
-                rightElement={
-                    <Button
-                        onClick={() => setShow(!show)}
-                        h='1.75rem'
-                        size='sm'
-                    >
-                        {show ? "Hide" : "Show"}
-                    </Button>
-                }
-                isRequired
-            />
-            <Button
-                colorScheme='blue'
-                width='100%'
-                style={{ marginTop: 15 }}
-                onClick={handleSubmit}
-                isLoading={isLoading}
-            >
-                Login
-            </Button>
-        </VStack>
+        <form>
+            <VStack>
+                <InputField
+                    name='email'
+                    placeholder='Enter your email'
+                    value={loginForm.email}
+                    label='Email'
+                    handleOnChange={handleOnChange}
+                    isRequired
+                />
+                <InputField
+                    name='password'
+                    placeholder='Password'
+                    value={loginForm.password}
+                    label='Password'
+                    handleOnChange={handleOnChange}
+                    type={show ? "text" : "password"}
+                    rightElement={
+                        <Button
+                            onClick={() => setShow(!show)}
+                            h='1.75rem'
+                            size='sm'
+                        >
+                            {show ? "Hide" : "Show"}
+                        </Button>
+                    }
+                    isRequired
+                />
+                <Button
+                    colorScheme='blue'
+                    width='100%'
+                    style={{ marginTop: 15 }}
+                    onClick={handleSubmit}
+                    isLoading={isLoading}
+                    type='submit'
+                >
+                    Login
+                </Button>
+            </VStack>
+        </form>
     );
 };
 

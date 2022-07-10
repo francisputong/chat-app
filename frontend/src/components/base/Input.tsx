@@ -18,6 +18,7 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
     isRequired?: boolean;
     rightElement?: JSX.Element;
     mb?: number;
+    type?: string;
     variant?: "filled" | "flushed" | "outline";
     handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
@@ -32,6 +33,7 @@ export const InputField: React.FC<InputFieldProps> = ({
     rightElement,
     mb,
     variant,
+    type = "text",
     handleOnChange,
     ...props
 }) => {
@@ -40,8 +42,10 @@ export const InputField: React.FC<InputFieldProps> = ({
             {label && <FormLabel htmlFor={name}>{label}</FormLabel>}
             <InputGroup>
                 <Input
+                    style={type === "file" ? { border: "none" } : {}}
                     onChange={(e) => handleOnChange(e)}
                     variant={variant}
+                    type={type}
                     {...props}
                     id={name}
                     name={name}
