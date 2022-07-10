@@ -26,7 +26,9 @@ export const registerUser = asyncHandler(async (req, res) => {
         name,
         email,
         password,
-        profilePicture,
+        profilePicture:
+            profilePicture ||
+            "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
     });
 
     if (newUser) {
