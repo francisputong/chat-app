@@ -3,6 +3,7 @@ import { Button, useToast, VStack } from "@chakra-ui/react";
 import { InputField } from "../base/Input";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { ChatState } from "../../Context/ChatProvider";
 
 type Props = {};
 
@@ -24,6 +25,8 @@ const Signup = ({}: Props): JSX.Element => {
     });
     const [show, setShow] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+
+    const { setUser } = ChatState();
 
     const history = useHistory();
     const toast = useToast();
@@ -112,7 +115,7 @@ const Signup = ({}: Props): JSX.Element => {
             return;
         }
 
-        let profilePictureUrl = "";
+        let profilePictureUrl = null;
         if (registerForm.profilePicture) {
             const urlResponse = await postDetails(registerForm.profilePicture);
             if (urlResponse) profilePictureUrl = urlResponse;
@@ -129,6 +132,7 @@ const Signup = ({}: Props): JSX.Element => {
 
             localStorage.setItem("userInfo", JSON.stringify(data));
             setIsLoading(false);
+            setUser(data);
             history.push("/chats");
         } catch (error) {
             toast({

@@ -26,9 +26,14 @@ import UserListItem from "./UserListItem";
 type Props = {
     fetchAgain: boolean;
     setFetchAgain: Dispatch<SetStateAction<boolean>>;
+    handleGetMessages: () => void;
 };
 
-const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }: Props) => {
+const UpdateGroupChatModal = ({
+    fetchAgain,
+    setFetchAgain,
+    handleGetMessages,
+}: Props) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [groupChatName, setGroupChatName] = useState("");
     const [isRenameLoading, setIsRenameLoading] = useState(false);
@@ -107,7 +112,10 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }: Props) => {
             userToRemove._id === user?._id
                 ? setSelectedChat()
                 : setSelectedChat(data);
+
             setFetchAgain(!fetchAgain);
+            handleGetMessages();
+
             setIsAdding(false);
         } catch (error) {
             toast({

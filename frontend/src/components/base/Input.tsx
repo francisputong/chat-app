@@ -1,10 +1,12 @@
 import React, { InputHTMLAttributes } from "react";
 import {
+    ComponentWithAs,
     FormControl,
     FormErrorMessage,
     FormLabel,
     Input,
     InputGroup,
+    InputProps,
     InputRightElement,
 } from "@chakra-ui/react";
 
@@ -16,6 +18,7 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
     isRequired?: boolean;
     rightElement?: JSX.Element;
     mb?: number;
+    variant?: "filled" | "flushed" | "outline";
     handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -28,6 +31,7 @@ export const InputField: React.FC<InputFieldProps> = ({
     isRequired,
     rightElement,
     mb,
+    variant,
     handleOnChange,
     ...props
 }) => {
@@ -37,6 +41,7 @@ export const InputField: React.FC<InputFieldProps> = ({
             <InputGroup>
                 <Input
                     onChange={(e) => handleOnChange(e)}
+                    variant={variant}
                     {...props}
                     id={name}
                     name={name}

@@ -3,6 +3,7 @@ import { Button, useToast, VStack } from "@chakra-ui/react";
 import { InputField } from "../base/Input";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { ChatState } from "../../Context/ChatProvider";
 
 type Props = {};
 
@@ -13,6 +14,7 @@ const Login = ({}: Props): JSX.Element => {
     });
     const [show, setShow] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const { setUser } = ChatState();
 
     const history = useHistory();
     const toast = useToast();
@@ -52,17 +54,17 @@ const Login = ({}: Props): JSX.Element => {
                 isClosable: true,
                 position: "bottom",
             });
+
+            setUser(data);
             history.push("/chats");
         } catch (error: any) {
-            if (error instanceof Error) {
-                toast({
-                    title: "Server error",
-                    status: "error",
-                    duration: 5000,
-                    isClosable: true,
-                    position: "bottom",
-                });
-            }
+            toast({
+                title: error.response.data.message,
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+                position: "bottom",
+            });
 
             setIsLoading(false);
         }
