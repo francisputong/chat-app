@@ -15,6 +15,7 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
     isInvalid?: boolean;
     isRequired?: boolean;
     rightElement?: JSX.Element;
+    mb?: number;
     handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -26,6 +27,7 @@ export const InputField: React.FC<InputFieldProps> = ({
     isInvalid,
     isRequired,
     rightElement,
+    mb,
     handleOnChange,
     ...props
 }) => {
@@ -39,6 +41,7 @@ export const InputField: React.FC<InputFieldProps> = ({
                     id={name}
                     name={name}
                     value={value}
+                    mb={mb}
                 />
                 {rightElement && (
                     <InputRightElement width='4.5rem'>
