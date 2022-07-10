@@ -18,7 +18,7 @@ type Props = {
     setFetchAgain: Dispatch<SetStateAction<boolean>>;
 };
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://chat-me-app-mern.herokuapp.com/";
 let socket: any, selectedChatCompare: any;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }: Props) => {
