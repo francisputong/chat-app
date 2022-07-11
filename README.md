@@ -2,7 +2,7 @@
 
 A Chat Application built with React, Node.js, Express, and MongoDB.
 
-[Web app deployed on Heroku](https://devmeapp.herokuapp.com/)
+[Web app deployed on Heroku](https://chat-me-app-mern.herokuapp.com/)
 
 ## Installation and Setup Instructions
 
