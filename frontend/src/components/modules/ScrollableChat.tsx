@@ -4,7 +4,6 @@ import {
     isLastMessage,
     isSameSender,
     isSameSenderMargin,
-    isSameUser,
 } from "../../config/helpers";
 import { ChatState } from "../../Context/ChatProvider";
 
@@ -19,8 +18,15 @@ const ScrollableChat = ({ messages, typingComponent }: Props) => {
         <ScrollableFeed>
             {messages &&
                 messages.map((message: any, i: number) => {
+                    // console.log(
+                    //     isSameSender(messages, message, i, user!._id),
+                    //     i
+                    // );
                     return (
-                        <div style={{ display: "flex" }} key={message._id}>
+                        <div
+                            style={{ display: "flex", alignItems: "center" }}
+                            key={message._id}
+                        >
                             {(isSameSender(messages, message, i, user!._id) ||
                                 isLastMessage(messages, i, user!._id)) && (
                                 <Tooltip
@@ -29,7 +35,7 @@ const ScrollableChat = ({ messages, typingComponent }: Props) => {
                                     hasArrow
                                 >
                                     <Avatar
-                                        mt='7px'
+                                        mt='10px'
                                         mr={1}
                                         size='sm'
                                         cursor='pointer'
@@ -55,9 +61,7 @@ const ScrollableChat = ({ messages, typingComponent }: Props) => {
                                         i,
                                         user!._id
                                     ),
-                                    marginTop: isSameUser(messages, message, i)
-                                        ? 10
-                                        : 3,
+                                    marginTop: 10,
                                 }}
                             >
                                 {message.content}

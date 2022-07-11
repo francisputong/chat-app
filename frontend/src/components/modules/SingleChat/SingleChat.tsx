@@ -72,7 +72,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: Props) => {
 
     useEffect(() => {
         socket.on("message received", (newMessageReceived: any) => {
-            console.log(newMessageReceived);
             if (
                 !selectedChatCompare ||
                 selectedChatCompare._id !== newMessageReceived.chat._id
@@ -140,6 +139,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }: Props) => {
                 );
 
                 socket.emit("new message", data);
+                setFetchAgain(!fetchAgain);
                 setMessages([...messages, data]);
             } catch (error) {
                 toast({
